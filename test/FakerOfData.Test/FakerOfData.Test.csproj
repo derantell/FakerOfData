@@ -41,8 +41,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CounterTest.cs" />
     <Compile Include="GeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SomeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
