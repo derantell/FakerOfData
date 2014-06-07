@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counter.cs" />
+    <Compile Include="DynamicStringCollection.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="IDestination.cs" />
