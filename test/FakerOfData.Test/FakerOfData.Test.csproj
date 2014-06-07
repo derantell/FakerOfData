@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CounterTest.cs" />
+    <Compile Include="DatesAndTimesTest.cs" />
     <Compile Include="DynamicStringCollectionTest.cs" />
     <Compile Include="EnumerableExtensionsTest.cs" />
     <Compile Include="GeneratorTest.cs" />
