@@ -11,6 +11,7 @@ namespace FakerOfData.TestApp {
         public Guid UniqueId { get; set; }
         public string Category { get; set; }
         public string Name { get; set; }
+        public string PersonalNumber { get; set; }
     }
 
     static class Ext {
@@ -28,6 +29,7 @@ namespace FakerOfData.TestApp {
                 d => d.Index     = Counter.Next.Index,
                 d => d.TimeStamp = Some.Random.DateBetween(2.Years().Ago(), 1.Years().FromNow()).ToString("s"),
                 d => d.UniqueId  = Guid.NewGuid(),
+                d => d.PersonalNumber = Some.Random.PersonalNumber(format:PersonalNumberFormat.Friendly),
                 d => d.Name      = Some.Random.FullName(),
                 d => d.Category  = Some.Random.Category())
 
