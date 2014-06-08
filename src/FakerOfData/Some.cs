@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FakerOfData {
     public static class Some {
@@ -6,6 +8,11 @@ namespace FakerOfData {
             get { return _random; }
         }
 
-        private static readonly Random _random = new Random();
+        public static T ItemFrom<T>(this Random self, IEnumerable<T> sequence) {
+            var index = self.Next(sequence.Count());
+            return sequence.ElementAt(index);
+        }
+
+    private static readonly Random _random = new Random();
     }
 }
