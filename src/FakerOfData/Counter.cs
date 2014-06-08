@@ -7,25 +7,44 @@ namespace FakerOfData {
             get { return _properties; }
         }
 
+        public static int NextFor(string key) {
+            return _properties[key];
+        }
+
+        public static void SetFor(string key, int value) {
+            _properties[key] = value;
+        } 
+
         private static readonly AutoProperty _properties = new AutoProperty();
 
         private class AutoProperty : DynamicObject {
             private readonly Dictionary<string, int> _counters = new Dictionary<string, int>();
 
-            public override bool TryGetMember(GetMemberBinder binder, out object result) {
-                int value;
-                if (_counters.TryGetValue(binder.Name, out value)) {
-                    result = value;
-                    _counters[binder.Name] += 1;
-                    return true;
+            public int this[string key] {
+                get {
+                    if (!_counters.ContainsKey(key)) {
+                        _counters[key] = 0;
+                    }
+
+                    _counters[key] += 1;
+                    return _counters[key];
                 }
 
-                result = _counters[binder.Name] = 1;
+                set { _counters[key] = value; }
+            }
+
+            public override bool TryGetMember(GetMemberBinder binder, out object result) {
+                if (!_counters.ContainsKey(binder.Name)) {
+                    _counters[binder.Name] = 0;
+                }
+
+                _counters[binder.Name] += 1;
+                result = _counters[binder.Name];
                 return true;
             }
 
             public override bool TrySetMember(SetMemberBinder binder, object value) {
-                _counters[binder.Name] = (int) value;
+                _counters[binder.Name] = (int)value;
                 return true;
             }
         }

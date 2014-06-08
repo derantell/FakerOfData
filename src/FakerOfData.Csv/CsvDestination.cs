@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace FakerOfData.Csv {
     public class CsvDestination : IDestination {
+        public CsvDestination(string separator, string outputPath) 
+            : this(separator, f => new StreamWriter(Path.Combine(outputPath,f))) { }
+
         public CsvDestination(string separator, Func<string, TextWriter> writerCreator = null ) {
             _createWriter = writerCreator ?? DefaultWriter;
             _separator = separator;

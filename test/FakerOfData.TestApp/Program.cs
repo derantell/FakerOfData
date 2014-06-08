@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using FakerOfData;
 using FakerOfData.Csv;
 
-namespace FakerOfData.TestApp {
+namespace Foo.FakerOfData.TestApp {
     class TheTestData {
         public int Index { get; set; }
         public string TimeStamp { get; set; }
@@ -26,7 +27,7 @@ namespace FakerOfData.TestApp {
             Generator.Strings = new DynamicStringCollection(new FileStringSource("Strings"));
 
             Generator.Of<TheTestData>(
-                d => d.Index     = Counter.Next.Index,
+                d => d.Index     = Counter.Next.Brax,
                 d => d.TimeStamp = Some.Random.DateBetween(2.Years().Ago(), 1.Years().FromNow()).ToString("s"),
                 d => d.UniqueId  = Guid.NewGuid(),
                 d => d.Text      = Lorem.Ipsum(10),

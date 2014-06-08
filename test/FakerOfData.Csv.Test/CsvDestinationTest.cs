@@ -26,7 +26,6 @@ namespace FakerOfData.Csv.Test {
                     .Contains("Hello;1")
                     .And.Contains("World;2");
             }
-
         }
 
         public class TestData {
