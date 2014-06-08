@@ -8,9 +8,9 @@ namespace FakerOfData.Sql {
             _db = Database.OpenConnection(_connectionString);
         }
 
-        public void Load<T>(IEnumerable<T> sequence) {
+        public IEnumerable<T> Load<T>(IEnumerable<T> sequence) {
             var tableName = typeof (T).Name;
-            _db[tableName].Insert(sequence);
+            return _db[tableName].Insert(sequence);
         }
 
         private readonly dynamic _db;

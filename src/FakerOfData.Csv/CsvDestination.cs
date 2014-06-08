@@ -10,13 +10,14 @@ namespace FakerOfData.Csv {
             _separator = separator;
         }
 
-        public void Load<T>(IEnumerable<T> sequence) {
+        public IEnumerable<T> Load<T>(IEnumerable<T> sequence) {
             var filename = string.Format(FileNameTemplate, typeof (T).Name, DateTime.Now);
             using (var writer = _createWriter(filename)) {
                 foreach (var item in sequence) {
                     writer.WriteLine( BuildLine(item) );
                 }
             }
+            return sequence;
         }
 
         private string BuildLine<T>(T item) {
