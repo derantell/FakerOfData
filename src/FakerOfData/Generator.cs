@@ -12,6 +12,8 @@ namespace FakerOfData {
         public static IDestination Destination { get; set; }
         public static dynamic Strings { get; set; }
 
-        static Generator() { }
+        static Generator() {
+            Strings = new DynamicStringCollection(new FileStringSource("Strings"));
+        }
     }
 }

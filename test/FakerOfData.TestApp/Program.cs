@@ -10,6 +10,7 @@ namespace FakerOfData.TestApp {
         public string TimeStamp { get; set; }
         public Guid UniqueId { get; set; }
         public string Category { get; set; }
+        public string Name { get; set; }
     }
 
     static class Ext {
@@ -24,10 +25,11 @@ namespace FakerOfData.TestApp {
             Generator.Strings = new DynamicStringCollection(new FileStringSource("Strings"));
 
             Generator.Of<TheTestData>(
-                d => d.Index = Counter.Next.Index,
+                d => d.Index     = Counter.Next.Index,
                 d => d.TimeStamp = Some.Random.DateBetween(2.Years().Ago(), 1.Years().FromNow()).ToString("s"),
-                d => d.UniqueId = Guid.NewGuid(),
-                d => d.Category = Some.Random.Category())
+                d => d.UniqueId  = Guid.NewGuid(),
+                d => d.Name      = Some.Random.FullName(),
+                d => d.Category  = Some.Random.Category())
 
                 .Take(1000)
                 .Load();

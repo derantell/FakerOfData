@@ -53,6 +53,9 @@
     <Content Include="Strings\Category.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Strings\lastnames.txt" />
+    <Content Include="Strings\men.txt" />
+    <Content Include="Strings\women.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
