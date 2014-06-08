@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FakerOfData {
+namespace FakerOfData.Csv {
     public class CsvDestination : IDestination {
         public CsvDestination(string separator, Func<string, TextWriter> writerCreator = null ) {
             _createWriter = writerCreator ?? DefaultWriter;

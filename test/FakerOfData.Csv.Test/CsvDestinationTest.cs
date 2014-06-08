@@ -4,7 +4,7 @@ using System.Text;
 using NFluent;
 using Xunit;
 
-namespace FakerOfData.Test {
+namespace FakerOfData.Csv.Test {
     public class CsvDestinationTest {
 
         public class Load_method {

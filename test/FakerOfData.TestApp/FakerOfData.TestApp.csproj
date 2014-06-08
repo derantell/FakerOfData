@@ -44,6 +44,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\FakerOfData.Csv\FakerOfData.Csv.csproj">
+      <Project>{02cc4f85-6846-49f1-a674-5609c27c51c8}</Project>
+      <Name>FakerOfData.Csv</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
       <Name>FakerOfData</Name>
