@@ -144,5 +144,32 @@ namespace FakerOfData.Test {
                 Check.That(actualDate).IsEqualTo(referenceDate);
             }
         }
+
+        public class Integration_tests {
+            [Fact]
+            public void years_ago() {
+                var sixYearsAgo = 6.Years().Ago();
+
+                Check.That(sixYearsAgo.Year).IsEqualTo(DateTime.Today.Year - 6);
+            }
+
+            [Fact]
+            public void months_from_now() {
+                var threeMonthsFromNow = 3.Months().FromNow();
+                Check.That(threeMonthsFromNow.Month).IsEqualTo(DateTime.Today.AddMonths(3).Month);
+            }
+
+            [Fact]
+            public void six_days_before_christmas_day_1985() {
+                var day = 6.Days().Before(new DateTime(1985, 12, 25));
+                Check.That(day.Day).IsEqualTo(19);
+            }
+
+            [Fact]
+            public void the_day_after_tomorrow() {
+                var theDay = 1.Days().After(DateTime.Today.AddDays(1));
+                Check.That(theDay - DateTime.Today).Equals(TimeSpan.FromDays(2));
+            }
+        }
     }
 }

@@ -36,9 +36,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counter.cs" />
+    <Compile Include="CsvDestination.cs" />
     <Compile Include="DatesAndTimes.cs" />
     <Compile Include="DynamicStringCollection.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="FileStringSource.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="IDestination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
