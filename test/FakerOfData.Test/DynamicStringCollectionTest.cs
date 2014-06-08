@@ -41,5 +41,18 @@ namespace FakerOfData.Test {
                 Check.That((string[])collection.BarFoo).IsSameReferenceThan(strings);
             }
         }
+
+        public class TryGetIndex_method {
+            [Fact]
+            public void should_try_to_get_the_collection_matching_the_specified_index() {
+                var fakeSource = A.Fake<IStringSource>();
+                dynamic collection = new DynamicStringCollection(fakeSource);
+
+                IEnumerable<string> strings = collection["FooBar"];
+
+                A.CallTo(() => fakeSource.GetStrings("FooBar")).MustHaveHappened();
+                
+            }
+        }
     }
 }

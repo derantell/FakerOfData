@@ -23,6 +23,18 @@ namespace FakerOfData {
             return true;
         }
 
+        public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result) {
+            IEnumerable<string> stringCollection;
+            var key = (string) indexes[0];
+            if (_strings.TryGetValue(key, out stringCollection)) {
+                result = stringCollection;
+                return true;
+            }
+
+            result = _strings[key] = _stringSource.GetStrings(key);
+            return true;
+        }
+
         private readonly IStringSource _stringSource;
         private readonly Dictionary<string, IEnumerable<string>> _strings =
             new Dictionary<string, IEnumerable<string>>();

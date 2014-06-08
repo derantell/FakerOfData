@@ -14,8 +14,7 @@ namespace FakerOfData.TestApp {
 
     static class Ext {
         public static string Category(this Random self) {
-            IEnumerable<string> strings = Generator.Strings.Category;
-            return strings.ElementAt(self.Next(strings.Count()));
+            return self.String("Category");
         }
     }
 
