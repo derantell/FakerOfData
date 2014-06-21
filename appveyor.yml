@@ -19,13 +19,12 @@ init:
 
 # Script run after repo cloning, before build
 install: |
-	$sha = "$env:APPVEYOR_REPO_COMMIT".substring(0,7)
-	$env:MY_BUILD_TAG = "$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_REPO_BRANCH.$sha"
-	& .\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
+  $sha = "$env:APPVEYOR_REPO_COMMIT".substring(0,7)
+  $env:MY_BUILD_TAG = "$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_REPO_BRANCH.$sha"
+  & .\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
 
 # Environment variables
 environment:
-
 
 # =============================
 #  Build
@@ -39,7 +38,7 @@ configuration: Release
 
 # Restore nuget packages in solution
 before_build: 
-	- nuget restore
+  - nuget restore
 
 build:
   publish_nuget: true # Publish nuget artifacts to project feed
