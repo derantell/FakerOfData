@@ -1,5 +1,6 @@
 # Create a build tag, formatted like {build}.{branch}.{sha7}
 # Use aver to patch versions of assemblies and nupkg-packages
+pwd
 $sha = "$env:APPVEYOR_REPO_COMMIT".substring(0,7)
 $env:MY_BUILD_TAG = "$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_REPO_BRANCH.$sha"
-& ..\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
+..\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
