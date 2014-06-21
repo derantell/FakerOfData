@@ -18,10 +18,8 @@ version: 0.1.0.{build}
 
 
 # Script run after repo cloning, before build
-install: |
-  if($true) {
-    Write-Host "Fubar"
-  }
+install: 
+  - ps: Write-Host "This is PowerShell"
 
 # Environment variables
 # environment:
