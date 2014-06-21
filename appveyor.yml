@@ -14,7 +14,7 @@
 version: 0.1.0.{build}
 
 # Script that is run first, before repo cloning
-init:
+# init:
 
 
 # Script run after repo cloning, before build
@@ -24,7 +24,7 @@ install: |
   & .\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
 
 # Environment variables
-environment:
+# environment:
 
 # =============================
 #  Build
@@ -42,7 +42,6 @@ before_build:
 
 build:
   publish_nuget: true # Publish nuget artifacts to project feed
-
 
 
 # =============================
