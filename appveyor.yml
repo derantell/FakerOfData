@@ -19,7 +19,7 @@ version: 0.1.0.{build}
 
 # Script run after repo cloning, before build
 install: 
-  - ps: ..\build\install.ps1
+  - ps: .\build\install.ps1
 
 # Environment variables
 # environment:
