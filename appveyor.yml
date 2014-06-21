@@ -1,0 +1,54 @@
+# Build configuration for the FakerOfData project
+# https://github.com/derantell/FakerOfData
+
+# Reference appveyor.yml
+# http://www.appveyor.com/docs/appveyor-yml
+# Appveyor build configuration
+# http://www.appveyor.com/docs/build-configuration
+
+# =============================
+#  Setup
+# =============================
+
+# The version
+version: 0.1.0.{build}
+
+# Script that is run first, before repo cloning
+init:
+
+
+# Script run after repo cloning, before build
+install: |
+	$sha = "$env:APPVEYOR_REPO_COMMIT".substring(0,7)
+	$env:MY_BUILD_TAG = "$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_REPO_BRANCH.$sha"
+	& .\tools\aver.exe set "$($env:APPVEYOR_BUILD_FOLDER)" -scan -build "$env:MY_BUILD_TAG" 
+
+# Environment variables
+environment:
+
+
+# =============================
+#  Build
+# =============================
+
+# The target platform
+# platform: AnyCPU
+
+# Build configuration 
+configuration: Release
+
+# Restore nuget packages in solution
+before_build: 
+	- nuget restore
+
+build:
+  publish_nuget: true # Publish nuget artifacts to project feed
+
+
+
+# =============================
+#  Test	
+# =============================
+
+# Automatic discovery of test assembiles is the default?
+
