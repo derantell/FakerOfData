@@ -25,7 +25,7 @@ namespace FakerOfData.Csv {
 
         private string BuildLine<T>(T item) {
             var properties = typeof (T).GetProperties();
-            var fields = properties.Select(property => property.GetValue(item).ToString());
+            var fields = properties.Select(property => property.GetValue(item).ToNullString());
             return string.Join(_separator, fields);
         }
 
@@ -36,5 +36,11 @@ namespace FakerOfData.Csv {
         private const string FileNameTemplate = "{0}-{1:yyyyMMddHHmmss}.csv";
         private readonly Func<string, TextWriter> _createWriter;
         private readonly string _separator;
+    }
+
+    static class Extensions {
+        public static string ToNullString(this object self, string nullValue = "<null>") {
+            return (self ?? nullValue).ToString();
+        }
     }
 }

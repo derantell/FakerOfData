@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>FakerOfData</id>
+    <id>FakerOfData.Core</id>
     <version>0.1.0</version>
-    <title>FakerOfData</title>
+    <title>FakerOfData core module</title>
     <authors>David Tellander (@derantell)</authors>
     <owners>David Tellander (@derantell)</owners>
     <licenseUrl>https://github.com/derantell/FakerOfData/blob/master/LICENSE</licenseUrl>

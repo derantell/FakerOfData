@@ -1,18 +1,34 @@
 ﻿using System;
-using System.Threading;
 
 namespace FakerOfData {
-    public static class DatesAndTimes {
-        public static DateTime Date(this Random self) {
-            return new DateTime( (long) (self.NextDouble() * DateTime.MaxValue.Ticks));
+    public class RandomDateValue : IRandomValue {
+        public Func<object, object> RandomValues {
+            get {
+                return options => {
+                    var to     = options.Get("to", DateTime.Now);
+                    var from   = options.Get("from", 1.Years().Ago());
+                    var format = options.Get<string>("format");
+
+                    var span = to.Ticks - from.Ticks;
+                    var date = new DateTime(from.Ticks + (long) (span*Generator.Random.NextDouble()));
+
+                    if (format != null) return date.ToString(format);
+
+                    return date;
+                };
+            }
         }
 
-        public static DateTime DateBetween(this Random self, DateTime? from = null, DateTime? to = null) {
-            from = from ?? DateTime.MinValue;
-            to   = to   ?? DateTime.MaxValue;
+        public string Key { get { return "Date"; }}
+    }
 
-            var span = to.Value.Ticks - from.Value.Ticks;
-            return new DateTime(from.Value.Ticks + (long)(span * self.NextDouble()));
+    public static class DatesAndTimes {
+        public static DateTime Date(this Random self, object options = null) {
+            var to   = options.Get("to", DateTime.Now);
+            var from = options.Get("from", 1.Years().Ago());
+
+            var span = to.Ticks - from.Ticks;
+            return new DateTime(from.Ticks + (long)(span * self.NextDouble()));
         }
 
         public static Func<DateTime, int, DateTime> Years(this int self) {

@@ -2,25 +2,34 @@
 using System.Linq;
 
 namespace FakerOfData {
-    public static class Numbers {
-        
-        public static string PersonalNumber(this Random self, 
-            DateTime? from = null, 
-            DateTime? to = null, 
-            Sex sex = Sex.Any,
-            PersonalNumberFormat format = PersonalNumberFormat.Full) 
-        {
-            from = from ?? 110.Years().Ago();
-            to   = to   ?? DateTime.Now;
 
-            var birthDate = self.DateBetween(from, to);
-            var datePart = birthDate.ToString("yyMMdd");
-            var birthNumber = GetBirthNumber( self.Next(1000), sex );
-            var first9 = datePart + birthNumber;
+    public enum PersonalNumberFormat { Full, Short, Friendly }
+    public enum Sex                  { Any, Male, Female }
+
+    public class RandomPersonalNumberValue : IRandomValue {
+        public Func<object, object> RandomValues {
+            get { return RandomValue; }
+        }
+
+        public string Key {
+            get { return "PersonalNumber"; }
+        }
+
+        
+        private static object RandomValue( object options ) {
+            var from   = options.Get("from", 110.Years().Ago());
+            var to     = options.Get("to", DateTime.Now);
+            var sex    = options.Get<Sex>("sex");
+            var format = options.Get<PersonalNumberFormat>("format");
+
+            var birthDate   = Generator.Random.Date(new {from,to});
+            var datePart    = birthDate.ToString("yyMMdd");
+            var birthNumber = GetBirthNumber( Generator.Random.Next(1000), sex );
+            var first9      = datePart + birthNumber;
 
             var count = 0;
             var sumOfProducts = first9.Aggregate(0, (s, c) => {
-                var factor = count++%2 == 0 ? 2 : 1;
+                var factor  = count++%2 == 0 ? 2 : 1;
                 var product = factor*(int)Char.GetNumericValue(c);
                 return s + product/10 + product%10;
             });
@@ -55,7 +64,4 @@ namespace FakerOfData {
             }
         }
     }
-
-    public enum PersonalNumberFormat { Full, Short, Friendly }
-    public enum Sex { Any, Male, Female }
 }

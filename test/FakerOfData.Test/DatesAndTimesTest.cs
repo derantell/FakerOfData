@@ -16,19 +16,17 @@ namespace FakerOfData.Test {
 
                 Check.That(date1).Not.IsEqualTo(date2);
             }
-        }
 
-        public class DateBetween_method {
             [Fact]
             public void should_return_a_date_between_the_two_specified_dates() {
                 var random = new Random();
 
-                var start = new DateTime(1976, 1, 2);
-                var end = new DateTime(1976, 1, 3);
+                var from = new DateTime(1976, 1, 2);
+                var to = new DateTime(1976, 1, 3);
 
-                var theDate = random.DateBetween(start, end);
+                var theDate = random.Date(new{from, to});
 
-                Check.That(theDate).IsAfter(start).And.IsBefore(end);
+                Check.That(theDate).IsAfter(from).And.IsBefore(to);
             }
         }
 

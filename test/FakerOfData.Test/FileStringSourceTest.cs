@@ -9,7 +9,7 @@ namespace FakerOfData.Test {
 
             [Fact]
             public void should_try_to_find_file_in_the_configured_directory_matching_the_specified_key() {
-                var source = new FileStringSource("StringFiles");
+                var source = new FileStringSource("Strings");
 
                 var strings = source.GetStrings("FooBar");
 

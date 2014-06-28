@@ -48,9 +48,9 @@
       <Project>{02cc4f85-6846-49f1-a674-5609c27c51c8}</Project>
       <Name>FakerOfData.Csv</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.csproj">
+    <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.Core.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
-      <Name>FakerOfData</Name>
+      <Name>FakerOfData.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

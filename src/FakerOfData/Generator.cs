@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,10 +9,21 @@ namespace FakerOfData {
         }
 
         public static IDestination Destination { get; set; }
-        public static dynamic Strings { get; set; }
+        public static Random Random { get; private set; }
+
+        public static void Require<TRandomValue>() where TRandomValue : IRandomValue, new() {
+            Some.RandomThing(new TRandomValue());  
+        }
+
+        public static void Use(string valueName, Func<object, object> values) {
+            Some.RandomThing(valueName, values);
+        }
 
         static Generator() {
-            Strings = new DynamicStringCollection(new FileStringSource("Strings"));
+            Random = new Random();
+
+            Some.RandomThings( new RandomPersonalNumberValue(), new RandomDateValue() );
+            Some.RandomThings( new FileStringSource("Strings").GetRandomValues() );
         }
     }
 }

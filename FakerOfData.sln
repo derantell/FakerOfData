@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData", "src\FakerOfData\FakerOfData.csproj", "{C704105F-9BB2-4909-8B0F-6FDE317E03BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Core", "src\FakerOfData\FakerOfData.Core.csproj", "{C704105F-9BB2-4909-8B0F-6FDE317E03BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Test", "test\FakerOfData.Test\FakerOfData.Test.csproj", "{A8D20274-AA99-431D-96E5-E22AF0761249}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Core.Test", "test\FakerOfData.Test\FakerOfData.Core.Test.csproj", "{A8D20274-AA99-431D-96E5-E22AF0761249}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.TestApp", "test\FakerOfData.TestApp\FakerOfData.TestApp.csproj", "{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}"
 EndProject
