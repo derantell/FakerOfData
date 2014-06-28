@@ -55,6 +55,8 @@
     <Compile Include="SomeTest.cs" />
     <Compile Include="StringsTest.cs" />
     <Compile Include="The_RandomDate_class.cs" />
+    <Compile Include="The_RandomStringValue_class.cs" />
+    <Compile Include="The_RandomThings_dynamic_class.cs" />
     <Compile Include="The_static_Draw_class.cs" />
     <Compile Include="The_static_Option_class.cs" />
   </ItemGroup>
