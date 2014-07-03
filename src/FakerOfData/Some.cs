@@ -17,7 +17,7 @@ namespace FakerOfData {
         }
 
         public static void RandomThings(params IRandomValue[] things) {
-            RandomThings( things.ToList() );
+            RandomThings( things.AsEnumerable() );
         }
 
         public static void RandomThings(IEnumerable<IRandomValue> things) {
@@ -31,6 +31,12 @@ namespace FakerOfData {
             return (T) values[key](options);
         }
 
-        private static readonly RandomThings _randomThings = new RandomThings();
+        // Clears the RandomThings collection, only used for unit testing.
+        internal static void Clear() {
+            _randomThings = new RandomThings();
+        }
+
+        private static RandomThings _randomThings = new RandomThings();
+
     }
 }

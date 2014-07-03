@@ -7,8 +7,8 @@
     <ProjectGuid>{C704105F-9BB2-4909-8B0F-6FDE317E03BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FakerOfData</RootNamespace>
-    <AssemblyName>FakerOfData</AssemblyName>
+    <RootNamespace>FakerOfData.Core</RootNamespace>
+    <AssemblyName>FakerOfData.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

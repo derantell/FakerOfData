@@ -39,7 +39,22 @@ namespace FakerOfData.Test {
 
                 Check.That((object) randomThings.Test).IsSameReferenceThan(result);
             }
+        }
 
+        public class TryInvokeMember_overriden_method {
+            [Fact]
+            public void should_get_a_value_from_the_function_registered_under_the_specified_key_passing_in_the_options_object() {
+                var randomThings = new RandomThings();
+
+                var opt = new {};
+                randomThings.RegisterValues("Test", o => o );
+
+                dynamic dynamicThings = randomThings;
+
+                var value = dynamicThings.Test(opt);
+
+                Check.That((object) value).IsSameReferenceThan(opt);
+            }
         }
     }
 }
