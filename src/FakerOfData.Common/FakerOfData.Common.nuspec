@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FakerOfData.Common</id>
+    <version>0.1.0</version>
+    <title>FakerOfData common module</title>
+    <authors>David Tellander (@derantell)</authors>
+    <owners>David Tellander (@derantell)</owners>
+    <licenseUrl>https://github.com/derantell/FakerOfData/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/derantell/FakerOfData</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains random value generators which are not considered core functionality.</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>fake test data generator csharp scriptcs</tags>
+  </metadata>
+  
