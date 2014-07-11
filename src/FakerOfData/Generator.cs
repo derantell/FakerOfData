@@ -22,7 +22,7 @@ namespace FakerOfData {
         static Generator() {
             Random = new Random();
 
-            Some.RandomThings( new RandomPersonalNumberValue(), new RandomDateValue() );
+            Some.RandomThings( new RandomDateValue() );
             Some.RandomThings( new FileStringSource("Strings").GetRandomValues() );
         }
     }

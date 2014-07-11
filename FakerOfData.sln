@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Sql.Test", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Sql", "src\FakerOfData.Sql\FakerOfData.Sql.csproj", "{64765413-E5EC-4F25-8171-861C6AB5AA8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Common", "src\FakerOfData.Common\FakerOfData.Common.csproj", "{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Common.Test", "test\FakerOfData.Common.Test\FakerOfData.Common.Test.csproj", "{568BBB5D-78ED-4F91-BDE1-2EF68739832E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{64765413-E5EC-4F25-8171-861C6AB5AA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64765413-E5EC-4F25-8171-861C6AB5AA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64765413-E5EC-4F25-8171-861C6AB5AA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568BBB5D-78ED-4F91-BDE1-2EF68739832E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568BBB5D-78ED-4F91-BDE1-2EF68739832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568BBB5D-78ED-4F91-BDE1-2EF68739832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568BBB5D-78ED-4F91-BDE1-2EF68739832E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

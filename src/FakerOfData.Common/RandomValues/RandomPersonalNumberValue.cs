@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace FakerOfData {
+namespace FakerOfData.Common.RandomValues {
 
     public enum PersonalNumberFormat { Full, Short, Friendly }
     public enum Sex                  { Any, Male, Female }
