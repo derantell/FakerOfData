@@ -71,6 +71,70 @@ namespace FakerOfData.Common.Test.RandomValues {
 
                 Check.That(value).Matches("^FOO-[1234]{3,5}-BAR$");
             }
+
+            [Fact]
+            public void should_return_a_digit_when_the_digit_predifined_character_class_is_specified() {
+                var pattern = new {pattern = "[:digit:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[0123456789]{100}$");
+            }
+
+            [Fact]
+            public void should_return_a_lower_case_letter_when_the_lower_predefined_character_class_is_specified() {
+                var pattern = new {pattern = "[:lower:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[a-z]{100}$");
+            }
+
+            [Fact]
+            public void should_return_an_upper_case_letter_when_the_upper_predefined_character_class_is_specified() {
+                var pattern = new {pattern = "[:upper:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[A-Z]{100}$");
+            }
+
+            [Fact]
+            public void should_return_an_upper_or_lower_case_character_when_the_alpha_predefined_class_is_specified() {
+                var pattern = new {pattern = "[:alpha:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[A-Za-z]{100}$");
+            }
+
+            [Fact]
+            public void should_return_a_digit_or_a_letter_when_the_alnum_predefined_class_is_specified() {
+                var pattern = new {pattern = "[:alnum:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[A-Za-z0-9]{100}$");
+            }
+
+            [Fact]
+            public void should_handle_both_predefined_classes_and_characters_in_pattern() {
+                var pattern = new {pattern = "[:digit:abcdef]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[a-f0-9]{100}$");
+            }
+
+            [Fact]
+            public void should_handle_more_than_one_predefined_class_in_pattern() {
+                var pattern = new {pattern = "[:digit::upper:]{100}"}; 
+
+                var value = (string) stringPattern.RandomValues(pattern);
+
+                Check.That(value).Matches("^[A-Z0-9]{100}$");
+            
+            }
         }
     }
 }

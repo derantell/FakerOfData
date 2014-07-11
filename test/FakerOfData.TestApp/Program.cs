@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using FakerOfData;
+using FakerOfData.Common.RandomValues;
 using FakerOfData.Csv;
 
 namespace Foo.FakerOfData.TestApp {
@@ -37,9 +38,11 @@ namespace Foo.FakerOfData.TestApp {
     class Program {
         static void Main(string[] args) {
             //Generator.Destination = new CsvDestination("\t", s => new StreamWriter(@"c:\slask\" + s));
-            Generator.Destination = new CsvDestination(",", s => Console.Out);
+            Generator.Destination = new CsvDestination("\t", s => Console.Out);
             Generator.Use("Category", _ => Draw.One("Foo", "Bar", "Baz"));
             Generator.Require<FavouriteCandy>();
+            Generator.Require<RandomPersonalNumberValue>();
+            Generator.Require<RandomStringPatternValue>();
 
             Generator
                 .Of<TheTestData>(
@@ -48,7 +51,7 @@ namespace Foo.FakerOfData.TestApp {
                     d => d.UniqueId  = Guid.NewGuid(),
                     d => d.Text      = Lorem.Ipsum(10),
                     d => d.PersonalNumber = Some.Random.PersonalNumber,
-                    d => d.Category  = Some.Random.FavouriteCandy(new {kind = CandyKind.Fruity}))
+                    d => d.Category  = Some.Random.StringPattern(new{pattern="[:alnum:_-/]{100}"}))
                 .Take(5)
                 .Load();
 

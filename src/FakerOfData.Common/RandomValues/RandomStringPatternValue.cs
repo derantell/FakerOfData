@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace FakerOfData.Common.RandomValues {
@@ -24,8 +23,7 @@ namespace FakerOfData.Common.RandomValues {
         class PatternParser {
             public StringPattern Parse(string pattern) {
                 var result = new StringPattern();
-                var parts = Pattern.Match(pattern);
-                var currentMatch = parts;
+                var currentMatch = Pattern.Match(pattern);
 
                 do {
                     var part = HandlePart(currentMatch);
@@ -55,7 +53,7 @@ namespace FakerOfData.Common.RandomValues {
 
             private static readonly Regex Pattern = new Regex(
                 @" # 
-                \[(?<cclass>.+?)\](?:\{(?<min>\d+)(?:,(?<max>\d+))?\})?
+                \[(?<cclass>(?:(?::(?:digit|lower|upper|alpha|alnum):)|[^[:]+?)+)\](?:\{(?<min>\d+)(?:,(?<max>\d+))?\})?     
                 |
                 (?<static>[^\[{]+)
                 "
@@ -65,7 +63,7 @@ namespace FakerOfData.Common.RandomValues {
 
         class CharacterClass {
             public CharacterClass(string alphabet, int min = 1, int max = 1) {
-                _alphabet = alphabet;
+                _alphabet = AlphabetParser.Replace( alphabet, ExpandPredefined );
                 _min = min;
                 _max = max;
             }
@@ -80,10 +78,29 @@ namespace FakerOfData.Common.RandomValues {
                 return new string(chars);
             }
 
+            private string ExpandPredefined(Match match) {
+                return Predefined[match.Groups[1].Value];
+            }
+
+            private readonly Dictionary<string,string> Predefined =
+                new Dictionary<string, string> {
+                    {"digit", Digits},
+                    {"lower", Lower},
+                    {"upper", Upper},
+                    {"alpha", Upper + Lower},
+                    {"alnum", Upper + Lower + Digits},
+                };
+
             private readonly string _alphabet;
             private readonly int _min;
             private readonly int _max;
             private static readonly Random Random = new Random();
+            private static readonly Regex AlphabetParser = new Regex(
+                @":(digit|lower|upper|alpha|alnum):");
+
+            private const string Digits = "0123456789";
+            private const string Upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            private const string Lower = "abcdefghijklmnopqrstuvwxyz";
         }
 
         class StringPattern {
