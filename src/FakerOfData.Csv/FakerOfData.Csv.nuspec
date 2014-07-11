@@ -12,5 +12,8 @@
     <description>Destination for FakerOfData which serializes fake data to a CSV file.</description>
     <copyright>Copyright 2014</copyright>
     <tags>fake test data generator csharp scriptcs csv</tags>
+    <dependencies>
+      <dependency id="FakerOfData.Core" version="0.2" />
+    </dependencies>
   </metadata>
 </package>
