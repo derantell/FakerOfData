@@ -62,7 +62,7 @@
       <Project>{64765413-e5ec-4f25-8171-861c6ab5aa8c}</Project>
       <Name>FakerOfData.Sql</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.Core.csproj">
+    <ProjectReference Include="..\..\src\FakerOfData.Core\FakerOfData.Core.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
       <Name>FakerOfData.Core</Name>
     </ProjectReference>

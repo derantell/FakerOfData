@@ -40,7 +40,7 @@
     <Compile Include="RandomValues\RandomStringPatternValue.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FakerOfData\FakerOfData.Core.csproj">
+    <ProjectReference Include="..\FakerOfData.Core\FakerOfData.Core.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
       <Name>FakerOfData.Core</Name>
     </ProjectReference>

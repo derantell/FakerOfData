@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Core", "src\Fak
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Core.Test", "test\FakerOfData.Core.Test\FakerOfData.Core.Test.csproj", "{A8D20274-AA99-431D-96E5-E22AF0761249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.TestApp", "test\FakerOfData.TestApp\FakerOfData.TestApp.csproj", "{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Csv", "src\FakerOfData.Csv\FakerOfData.Csv.csproj", "{02CC4F85-6846-49F1-A674-5609C27C51C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Csv.Test", "test\FakerOfData.Csv.Test\FakerOfData.Csv.Test.csproj", "{789F0345-12E7-4A84-BBD9-A083E107BBA9}"
@@ -35,10 +33,6 @@ Global
 		{A8D20274-AA99-431D-96E5-E22AF0761249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8D20274-AA99-431D-96E5-E22AF0761249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8D20274-AA99-431D-96E5-E22AF0761249}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A9F8C4B-4F0F-41EE-970E-5809A7DAA561}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02CC4F85-6846-49F1-A674-5609C27C51C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02CC4F85-6846-49F1-A674-5609C27C51C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02CC4F85-6846-49F1-A674-5609C27C51C8}.Release|Any CPU.ActiveCfg = Release|Any CPU

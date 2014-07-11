@@ -49,7 +49,7 @@
       <Project>{519ea7f1-a993-44cd-adc3-6e2d04cd5b03}</Project>
       <Name>FakerOfData.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.Core.csproj">
+    <ProjectReference Include="..\..\src\FakerOfData.Core\FakerOfData.Core.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
       <Name>FakerOfData.Core</Name>
     </ProjectReference>

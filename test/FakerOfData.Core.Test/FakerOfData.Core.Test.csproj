@@ -65,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FakerOfData\FakerOfData.Core.csproj">
+    <ProjectReference Include="..\..\src\FakerOfData.Core\FakerOfData.Core.csproj">
       <Project>{c704105f-9bb2-4909-8b0f-6fde317e03ba}</Project>
       <Name>FakerOfData.Core</Name>
     </ProjectReference>
