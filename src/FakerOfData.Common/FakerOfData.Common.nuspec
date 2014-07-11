@@ -12,5 +12,8 @@
     <description>This package contains random value generators which are not considered core functionality.</description>
     <copyright>Copyright 2014</copyright>
     <tags>fake test data generator csharp scriptcs</tags>
+    <dependencies>
+      <dependency id="FakerOfData.Core" version="0.2" />
+    </dependencies>
   </metadata>
-  
+</package>
