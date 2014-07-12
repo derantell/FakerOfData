@@ -4,8 +4,7 @@ using Simple.Data;
 namespace FakerOfData.Sql {
     public class SqlDestination : IDestination {
         public SqlDestination(string connectionString) {
-            _connectionString = connectionString;
-            _db = Database.OpenConnection(_connectionString);
+            _db = Database.OpenConnection(connectionString);
         }
 
         public IEnumerable<T> Load<T>(IEnumerable<T> sequence) {
@@ -14,6 +13,5 @@ namespace FakerOfData.Sql {
         }
 
         private readonly dynamic _db;
-        private readonly string _connectionString;
     }
 }
