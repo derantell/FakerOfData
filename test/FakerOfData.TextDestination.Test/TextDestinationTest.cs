@@ -59,7 +59,7 @@ namespace FakerOfData.TextDestination.Test {
                 var destination = new TextDestination(testOptions, testWriter);
 
                 var data = new[] {
-                    new TestClassWithUnderScoreNames {
+                    new {
                         Field_no_1 = "foo",
                         FieldNo2 = "bar"
                     }
@@ -81,24 +81,35 @@ namespace FakerOfData.TextDestination.Test {
                 var destination = new TextDestination(testOptions, testWriter);
 
                 var data = new[] {
-                    new TestClassWithUnderScoreNames {
-                        Field_no_1 = "foo",
-                        FieldNo2 = "bar"
-                    }
+                    new { Field_no_1 = "foo" }
                 };
 
                 destination.Load(data);
 
                 var result = testOutput.ToString();
 
-                Check.That(result).StartsWith("Field no 1\tFieldNo2");
+                Check.That(result).StartsWith("Field no 1");
+            }
+
+            [Fact]
+            public void should_split_header_on_camel_case_when_split_flag_is_set_and_name_does_not_contain_underscores() {
+                testOptions.FirstLineIsHeaders = true;
+                testOptions.SplitHeaderText = true;
+
+                var destination = new TextDestination(testOptions, testWriter);
+
+                var data = new[] {
+                    new {FooBarBaz = "foobar"}
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Foo Bar Baz");
             }
         }
 
-        public class TestClassWithUnderScoreNames {
-            public string Field_no_1 { get; set; }
-            public string FieldNo2 { get; set; }
-        }
 
         public class TestData {
             public string Foo { get; set; }

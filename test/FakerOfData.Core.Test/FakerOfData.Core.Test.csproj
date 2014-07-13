@@ -60,6 +60,7 @@
     <Compile Include="The_static_Draw_class.cs" />
     <Compile Include="The_static_Option_class.cs" />
     <Compile Include="The_static_Some_class.cs" />
+    <Compile Include="Utility\The_DeCamelizer_class.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,6 +76,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

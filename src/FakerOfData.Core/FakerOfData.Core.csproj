@@ -51,6 +51,7 @@
     <Compile Include="RandomThings.cs" />
     <Compile Include="Some.cs" />
     <Compile Include="StringSourceExtensions.cs" />
+    <Compile Include="Utility\DeCamelizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Strings\lastnames.txt">

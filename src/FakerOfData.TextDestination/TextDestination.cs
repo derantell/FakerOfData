@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using FakerOfData.Core.Utility;
 
 namespace FakerOfData.TextDestination {
     public class TextDestination : IDestination {
@@ -40,11 +41,11 @@ namespace FakerOfData.TextDestination {
         }
 
         private string SplitHeaderName(PropertyInfo property) {
-            if (_options.SplitHeaderText) { 
-                if (property.Name.Contains("_"))
-                    return property.Name.Replace("_", " ");
-            }
-            return property.Name;
+            if (!_options.SplitHeaderText) return property.Name;
+
+            return property.Name.Contains("_") 
+                ? property.Name.Replace("_", " ")
+                : DeCamelizer.Split(property.Name);
         }
 
         private TextWriter DefaultWriter(string filePath) {
