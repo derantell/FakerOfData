@@ -48,8 +48,56 @@ namespace FakerOfData.TextDestination.Test {
                 var result = testOutput.ToString();
 
                 Check.That(result).StartsWith("Hello world\t42");
-                            
             }
+
+
+            [Fact]
+            public void should_not_split_header_names_when_split_header_option_is_cleared() {
+                testOptions.FirstLineIsHeaders = true;
+                testOptions.SplitHeaderText = false;
+
+                var destination = new TextDestination(testOptions, testWriter);
+
+                var data = new[] {
+                    new TestClassWithUnderScoreNames {
+                        Field_no_1 = "foo",
+                        FieldNo2 = "bar"
+                    }
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Field_no_1\tFieldNo2");
+            
+            }
+
+            [Fact]
+            public void should_split_header_labels_on_underscore_when_split_header_options_is_set() {
+                testOptions.FirstLineIsHeaders = true;
+                testOptions.SplitHeaderText = true;
+
+                var destination = new TextDestination(testOptions, testWriter);
+
+                var data = new[] {
+                    new TestClassWithUnderScoreNames {
+                        Field_no_1 = "foo",
+                        FieldNo2 = "bar"
+                    }
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Field no 1\tFieldNo2");
+            }
+        }
+
+        public class TestClassWithUnderScoreNames {
+            public string Field_no_1 { get; set; }
+            public string FieldNo2 { get; set; }
         }
 
         public class TestData {

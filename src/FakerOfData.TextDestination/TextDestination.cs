@@ -30,13 +30,21 @@ namespace FakerOfData.TextDestination {
         }
 
         private string BuildHeaders(IEnumerable<PropertyInfo> properties) {
-            var fields = properties.Select(property => property.Name);
+            var fields = properties.Select(SplitHeaderName);
             return string.Join(_options.FieldSeparator, fields);
         }
 
         private string BuildLine<T>(T item, IEnumerable<PropertyInfo> properties ) {
             var fields = properties.Select(property => property.GetValue(item).ToNullString());
             return string.Join(_options.FieldSeparator, fields);
+        }
+
+        private string SplitHeaderName(PropertyInfo property) {
+            if (_options.SplitHeaderText) { 
+                if (property.Name.Contains("_"))
+                    return property.Name.Replace("_", " ");
+            }
+            return property.Name;
         }
 
         private TextWriter DefaultWriter(string filePath) {
@@ -56,6 +64,7 @@ namespace FakerOfData.TextDestination {
 
     public class TextDestinationOptions {
         public bool FirstLineIsHeaders { get; set; }
+        public bool SplitHeaderText { get; set; }
         public string FieldSeparator { get; set; }
 
         public static readonly TextDestinationOptions Default = new TextDestinationOptions {
