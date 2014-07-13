@@ -4,8 +4,8 @@ using System.Text;
 using NFluent;
 using Xunit;
 
-namespace FakerOfData.Csv.Test {
-    public class CsvDestinationTest {
+namespace FakerOfData.TextDestination.Test {
+    public class TextDestinationTest {
 
         public class Load_method {
 
@@ -13,7 +13,7 @@ namespace FakerOfData.Csv.Test {
             public void should_write_the_data_to_a_file_using_the_specified_field_separator() {
                 var result = new StringBuilder();
                 Func<string, TextWriter> writerCreator = s => new StringWriter(result);
-                var destination = new CsvDestination(";",writerCreator);
+                var destination = new TextDestination(";",writerCreator);
 
                 var data = new[] {
                     new TestData {Bar = 1, Foo = "Hello"},
