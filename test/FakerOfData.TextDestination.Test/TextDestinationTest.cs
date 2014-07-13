@@ -8,23 +8,47 @@ namespace FakerOfData.TextDestination.Test {
     public class TextDestinationTest {
 
         public class Load_method {
+            private readonly StringBuilder testOutput;
+            private readonly Func<string,TextWriter> testWriter;
+            private readonly TextDestinationOptions testOptions;
+
+            public Load_method() {
+                testOutput = new StringBuilder();
+                testWriter = s => new StringWriter(testOutput);
+                testOptions = TextDestinationOptions.Default;
+            }
 
             [Fact]
-            public void should_write_the_data_to_a_file_using_the_specified_field_separator() {
-                var result = new StringBuilder();
-                Func<string, TextWriter> writerCreator = s => new StringWriter(result);
-                var destination = new TextDestination(";",writerCreator);
+            public void should_add_header_fields_as_first_row_when_specified_in_options() {
+                testOptions.FirstLineIsHeaders = true;
+                var destination = new TextDestination(testOptions, testWriter);
 
                 var data = new[] {
-                    new TestData {Bar = 1, Foo = "Hello"},
-                    new TestData {Bar = 2, Foo = "World"},
+                    new TestData {Foo = "Hello world", Bar = 42}
                 };
 
                 destination.Load(data);
 
-                Check.That(result.ToString())
-                    .Contains("Hello;1")
-                    .And.Contains("World;2");
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Foo\tBar");
+            }
+
+            [Fact]
+            public void should_not_add_header_fields_as_first_row_when_that_flag_is_false() {
+                testOptions.FirstLineIsHeaders = false;
+                var destination = new TextDestination(testOptions, testWriter);
+
+                var data = new[] {
+                    new TestData {Foo = "Hello world", Bar = 42}
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Hello world\t42");
+                            
             }
         }
 
