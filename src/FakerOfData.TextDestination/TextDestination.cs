@@ -21,10 +21,10 @@ namespace FakerOfData.TextDestination {
             var properties = typeof (T).GetProperties();
             using (var writer = _createWriter(filename)) {
                 if (_options.FirstLineIsHeaders) {
-                    writer.WriteLine(BuildHeaders(properties));
+                    writer.Write(BuildHeaders(properties) + _options.LineSeparator);
                 }
                 foreach (var item in sequence) {
-                    writer.WriteLine( BuildLine(item,properties) );
+                    writer.Write( BuildLine(item,properties) + _options.LineSeparator );
                 }
             }
             return sequence;
@@ -66,17 +66,20 @@ namespace FakerOfData.TextDestination {
     public struct TextDestinationOptions {
         public TextDestinationOptions(
             string fieldSeparator = "\t",
+            string lineSeparator = "\r\n",
             bool firstLineIsHeaders = false,
             bool splitHeaderText = false
         ) {
             FirstLineIsHeaders = firstLineIsHeaders;
             SplitHeaderText = splitHeaderText;
             FieldSeparator = fieldSeparator;
+            LineSeparator = lineSeparator;
         }
 
         public readonly bool FirstLineIsHeaders;
         public readonly bool SplitHeaderText;
         public readonly string FieldSeparator;
+        public readonly string LineSeparator;
 
         public static readonly TextDestinationOptions Default = new TextDestinationOptions();
     }

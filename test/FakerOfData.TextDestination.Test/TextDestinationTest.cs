@@ -34,6 +34,20 @@ namespace FakerOfData.TextDestination.Test {
             }
 
             [Fact]
+            public void should_use_the_specified_line_separator_character_to_separate_lines() {
+                var options = new TextDestinationOptions(lineSeparator: "$$");
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] {new {Foobar = "Foobar"}};
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).EndsWith("$$");
+            }
+
+            [Fact]
             public void should_add_header_fields_as_first_row_when_specified_in_options() {
                 var options = new TextDestinationOptions( firstLineIsHeaders: true );
                 var destination = new TextDestination(options, testWriter);
