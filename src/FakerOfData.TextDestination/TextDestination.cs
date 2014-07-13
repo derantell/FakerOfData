@@ -63,14 +63,21 @@ namespace FakerOfData.TextDestination {
         }
     }
 
-    public class TextDestinationOptions {
-        public bool FirstLineIsHeaders { get; set; }
-        public bool SplitHeaderText { get; set; }
-        public string FieldSeparator { get; set; }
+    public struct TextDestinationOptions {
+        public TextDestinationOptions(
+            string fieldSeparator = "\t",
+            bool firstLineIsHeaders = false,
+            bool splitHeaderText = false
+        ) {
+            FirstLineIsHeaders = firstLineIsHeaders;
+            SplitHeaderText = splitHeaderText;
+            FieldSeparator = fieldSeparator;
+        }
 
-        public static readonly TextDestinationOptions Default = new TextDestinationOptions {
-            FirstLineIsHeaders = false,
-            FieldSeparator = "\t"
-        };
+        public readonly bool FirstLineIsHeaders;
+        public readonly bool SplitHeaderText;
+        public readonly string FieldSeparator;
+
+        public static readonly TextDestinationOptions Default = new TextDestinationOptions();
     }
 }

@@ -10,18 +10,33 @@ namespace FakerOfData.TextDestination.Test {
         public class Load_method {
             private readonly StringBuilder testOutput;
             private readonly Func<string,TextWriter> testWriter;
-            private readonly TextDestinationOptions testOptions;
 
             public Load_method() {
                 testOutput = new StringBuilder();
                 testWriter = s => new StringWriter(testOutput);
-                testOptions = TextDestinationOptions.Default;
+            }
+
+            [Fact]
+            public void should_use_the_specified_field_separator_character() {
+                var options = new TextDestinationOptions(",");
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] { 
+                    new TestData { Foo = "Awesome", Bar = 42 }
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).StartsWith("Awesome,42");
+
             }
 
             [Fact]
             public void should_add_header_fields_as_first_row_when_specified_in_options() {
-                testOptions.FirstLineIsHeaders = true;
-                var destination = new TextDestination(testOptions, testWriter);
+                var options = new TextDestinationOptions( firstLineIsHeaders: true );
+                var destination = new TextDestination(options, testWriter);
 
                 var data = new[] {
                     new TestData {Foo = "Hello world", Bar = 42}
@@ -36,8 +51,8 @@ namespace FakerOfData.TextDestination.Test {
 
             [Fact]
             public void should_not_add_header_fields_as_first_row_when_that_flag_is_false() {
-                testOptions.FirstLineIsHeaders = false;
-                var destination = new TextDestination(testOptions, testWriter);
+                var options = new TextDestinationOptions(firstLineIsHeaders:false);
+                var destination = new TextDestination(options, testWriter);
 
                 var data = new[] {
                     new TestData {Foo = "Hello world", Bar = 42}
@@ -53,10 +68,9 @@ namespace FakerOfData.TextDestination.Test {
 
             [Fact]
             public void should_not_split_header_names_when_split_header_option_is_cleared() {
-                testOptions.FirstLineIsHeaders = true;
-                testOptions.SplitHeaderText = false;
+                var options = new TextDestinationOptions(firstLineIsHeaders: true, splitHeaderText: false);
 
-                var destination = new TextDestination(testOptions, testWriter);
+                var destination = new TextDestination(options, testWriter);
 
                 var data = new[] {
                     new {
@@ -75,10 +89,9 @@ namespace FakerOfData.TextDestination.Test {
 
             [Fact]
             public void should_split_header_labels_on_underscore_when_split_header_options_is_set() {
-                testOptions.FirstLineIsHeaders = true;
-                testOptions.SplitHeaderText = true;
+                var options = new TextDestinationOptions(firstLineIsHeaders: true, splitHeaderText: true);
 
-                var destination = new TextDestination(testOptions, testWriter);
+                var destination = new TextDestination(options, testWriter);
 
                 var data = new[] {
                     new { Field_no_1 = "foo" }
@@ -93,10 +106,9 @@ namespace FakerOfData.TextDestination.Test {
 
             [Fact]
             public void should_split_header_on_camel_case_when_split_flag_is_set_and_name_does_not_contain_underscores() {
-                testOptions.FirstLineIsHeaders = true;
-                testOptions.SplitHeaderText = true;
+                var options = new TextDestinationOptions(firstLineIsHeaders: true, splitHeaderText: true);
 
-                var destination = new TextDestination(testOptions, testWriter);
+                var destination = new TextDestination(options, testWriter);
 
                 var data = new[] {
                     new {FooBarBaz = "foobar"}
