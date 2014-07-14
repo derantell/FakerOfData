@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>FakerOfData.Sql</id>
+    <id>FakerOfData.DbDestination</id>
     <version>0.1.0</version>
-    <title>FakerOfData SQL destination</title>
+    <title>FakerOfData database destination</title>
     <authors>David Tellander (@derantell)</authors>
     <owners>David Tellander (@derantell)</owners>
     <licenseUrl>https://github.com/derantell/FakerOfData/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/derantell/FakerOfData</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Destination for FakerOfData which loads fake data to an MS SQL Server database</description>
+    <description>Destination for FakerOfData which loads fake data to database using the Simple.Data library</description>
     <copyright>Copyright 2014</copyright>
     <tags>fake test data generator csharp scriptcs sql</tags>
     <dependencies>

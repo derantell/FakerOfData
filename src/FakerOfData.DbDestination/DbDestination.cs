@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Simple.Data;
 
-namespace FakerOfData.Sql {
-    public class SqlDestination : IDestination {
-        public SqlDestination(string connectionString) {
+namespace FakerOfData.DbDestination {
+    public class DbDestination : IDestination {
+        public DbDestination(string connectionString) {
             _db = Database.OpenConnection(connectionString);
         }
 

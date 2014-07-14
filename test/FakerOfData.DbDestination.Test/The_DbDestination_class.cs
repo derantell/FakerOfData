@@ -4,8 +4,8 @@ using NFluent;
 using Simple.Data;
 using Xunit;
 
-namespace FakerOfData.Sql.Test {
-    public class SqlDestinationTest {
+namespace FakerOfData.DbDestination.Test {
+    public class The_DbDestination_class {
 
         public class Load_method {
 
@@ -14,7 +14,7 @@ namespace FakerOfData.Sql.Test {
                 var adapter = new InMemoryAdapter();
                 Database.UseMockAdapter(adapter);
 
-                var destination = new SqlDestination("foo");
+                var destination = new DbDestination("foo");
 
                 destination.Load(new[] {
                     new Record {Id = 42, Name = "Foo"},
@@ -32,7 +32,7 @@ namespace FakerOfData.Sql.Test {
                 adapter.SetAutoIncrementColumn("Record", "Id");
                 Database.UseMockAdapter(adapter);
 
-                var destination = new SqlDestination("foo");
+                var destination = new DbDestination("foo");
 
                 var inserted = destination.Load(new[] {
                     new Record {Name = "Foo"},
