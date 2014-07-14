@@ -58,7 +58,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FakerOfData.Sql\FakerOfData.DbDestination.csproj">
+    <ProjectReference Include="..\..\src\FakerOfData.DbDestination\FakerOfData.DbDestination.csproj">
       <Project>{64765413-e5ec-4f25-8171-861c6ab5aa8c}</Project>
       <Name>FakerOfData.DbDestination</Name>
     </ProjectReference>

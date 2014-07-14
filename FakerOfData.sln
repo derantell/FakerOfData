@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.TextDestination
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.TextDestination.Test", "test\FakerOfData.TextDestination.Test\FakerOfData.TextDestination.Test.csproj", "{789F0345-12E7-4A84-BBD9-A083E107BBA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.DbDestination.Test", "test\FakerOfData.Sql.Test\FakerOfData.DbDestination.Test.csproj", "{CF27801B-0401-4946-9E48-679E1BB24721}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.DbDestination.Test", "test\FakerOfData.DbDestination.Test\FakerOfData.DbDestination.Test.csproj", "{CF27801B-0401-4946-9E48-679E1BB24721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.DbDestination", "src\FakerOfData.Sql\FakerOfData.DbDestination.csproj", "{64765413-E5EC-4F25-8171-861C6AB5AA8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.DbDestination", "src\FakerOfData.DbDestination\FakerOfData.DbDestination.csproj", "{64765413-E5EC-4F25-8171-861C6AB5AA8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerOfData.Common", "src\FakerOfData.Common\FakerOfData.Common.csproj", "{519EA7F1-A993-44CD-ADC3-6E2D04CD5B03}"
 EndProject
