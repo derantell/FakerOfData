@@ -178,6 +178,32 @@ namespace FakerOfData.TextDestination.Test {
                     .And
                     .EndsWith("bar\tbaz\r\n");
             }
+
+            [Fact]
+            public void should_quote_strings_containing_field_line_or_quote_chars_when_quote_values_flag_is_set() {
+                var options = new TextDestinationOptions( 
+                    quoteFields: true,
+                    quoteCharacter: "'",
+                    fieldSeparator: ",",
+                    lineSeparator: "$");
+
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] {
+                    new {
+                        Quote = "'Quoted'", 
+                        Field = "Fi,eld", 
+                        Line = "Li$ne"
+                    }
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result)
+                    .StartsWith("'''Quoted''','Fi,eld','Li$ne'$");
+            }
         }
 
 

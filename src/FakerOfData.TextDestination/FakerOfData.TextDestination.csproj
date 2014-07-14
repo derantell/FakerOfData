@@ -35,8 +35,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="TextDestination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextDestinationOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FakerOfData.Core\FakerOfData.Core.csproj">

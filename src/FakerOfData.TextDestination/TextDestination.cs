@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -37,7 +36,7 @@ namespace FakerOfData.TextDestination {
         }
 
         private string BuildLine<T>(T item, IEnumerable<PropertyInfo> properties ) {
-            var fields = properties.Select(property => property.GetValue(item).ToNullString());
+            var fields = properties.Select(property => Quote( property.GetValue(item).ToNullString()));
             return string.Join(_options.FieldSeparator, fields);
         }
 
@@ -50,6 +49,20 @@ namespace FakerOfData.TextDestination {
                 .ToArray();
 
             return ordered;
+        }
+
+        private string Quote(string value) {
+            if (!_options.QuoteFields) return value;
+
+            if (value.Contains(_options.QuoteCharacter) ||
+                value.Contains(_options.FieldSeparator) ||
+                value.Contains(_options.LineSeparator)) {
+
+                value = value.Replace(_options.QuoteCharacter, _options.QuoteCharacter + _options.QuoteCharacter);
+                value = string.Format("{1}{0}{1}", value, _options.QuoteCharacter);
+            }
+
+            return value;
         }
 
         private string SplitHeaderName(PropertyInfo property) {
@@ -67,35 +80,5 @@ namespace FakerOfData.TextDestination {
         private const string FileNameTemplate = "{0}-{1:yyyyMMddHHmmss}.txt";
         private readonly Func<string, TextWriter> _createWriter;
         private readonly TextDestinationOptions _options;
-    }
-
-    static class Extensions {
-        public static string ToNullString(this object self, string nullValue = "<null>") {
-            return (self ?? nullValue).ToString();
-        }
-    }
-
-    public struct TextDestinationOptions {
-        public TextDestinationOptions(
-            string fieldSeparator = "\t",
-            string lineSeparator = "\r\n",
-            bool firstLineIsHeaders = false,
-            bool splitHeaderText = false,
-            string[] fieldOrder = null 
-        ) {
-            FirstLineIsHeaders = firstLineIsHeaders;
-            SplitHeaderText = splitHeaderText;
-            FieldSeparator = fieldSeparator;
-            LineSeparator = lineSeparator;
-            FieldOrder = fieldOrder ?? new string[0];
-        }
-
-        public readonly bool FirstLineIsHeaders;
-        public readonly bool SplitHeaderText;
-        public readonly string FieldSeparator;
-        public readonly string LineSeparator;
-        public readonly string[] FieldOrder;
-
-        public static readonly TextDestinationOptions Default = new TextDestinationOptions();
     }
 }
