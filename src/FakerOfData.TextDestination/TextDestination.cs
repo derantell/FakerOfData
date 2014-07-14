@@ -18,7 +18,8 @@ namespace FakerOfData.TextDestination {
 
         public IEnumerable<T> Load<T>(IEnumerable<T> sequence) {
             var filename = string.Format(FileNameTemplate, typeof (T).Name, DateTime.Now);
-            var properties = typeof (T).GetProperties();
+            var properties = OrderProperties( typeof (T).GetProperties() );
+
             using (var writer = _createWriter(filename)) {
                 if (_options.FirstLineIsHeaders) {
                     writer.Write(BuildHeaders(properties) + _options.LineSeparator);
@@ -38,6 +39,17 @@ namespace FakerOfData.TextDestination {
         private string BuildLine<T>(T item, IEnumerable<PropertyInfo> properties ) {
             var fields = properties.Select(property => property.GetValue(item).ToNullString());
             return string.Join(_options.FieldSeparator, fields);
+        }
+
+        private PropertyInfo[] OrderProperties(IEnumerable<PropertyInfo> properties ) {
+            if (_options.FieldOrder.Length == 0) return properties.ToArray();
+
+            var ordered = _options.FieldOrder
+                .Select(name => properties.FirstOrDefault(p => name.Equals(p.Name, StringComparison.OrdinalIgnoreCase)))
+                .Where(p => p != null)
+                .ToArray();
+
+            return ordered;
         }
 
         private string SplitHeaderName(PropertyInfo property) {
@@ -68,18 +80,21 @@ namespace FakerOfData.TextDestination {
             string fieldSeparator = "\t",
             string lineSeparator = "\r\n",
             bool firstLineIsHeaders = false,
-            bool splitHeaderText = false
+            bool splitHeaderText = false,
+            string[] fieldOrder = null 
         ) {
             FirstLineIsHeaders = firstLineIsHeaders;
             SplitHeaderText = splitHeaderText;
             FieldSeparator = fieldSeparator;
             LineSeparator = lineSeparator;
+            FieldOrder = fieldOrder ?? new string[0];
         }
 
         public readonly bool FirstLineIsHeaders;
         public readonly bool SplitHeaderText;
         public readonly string FieldSeparator;
         public readonly string LineSeparator;
+        public readonly string[] FieldOrder;
 
         public static readonly TextDestinationOptions Default = new TextDestinationOptions();
     }

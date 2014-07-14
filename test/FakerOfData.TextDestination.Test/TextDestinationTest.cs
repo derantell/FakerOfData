@@ -134,6 +134,50 @@ namespace FakerOfData.TextDestination.Test {
 
                 Check.That(result).StartsWith("Foo Bar Baz");
             }
+
+            [Fact]
+            public void should_order_fields_as_specified_by_the_fieldorder_option() {
+                var options = new TextDestinationOptions(
+                    firstLineIsHeaders: true,
+                    fieldOrder: new[] {"Bar", "Baz", "Foo"} );
+
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] {
+                    new {Foo = "foo", Bar = "bar", Baz = "baz"}
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result)
+                    .StartsWith("Bar\tBaz\tFoo")
+                    .And
+                    .EndsWith("bar\tbaz\tfoo\r\n");
+            }
+
+            [Fact]
+            public void should_skip_fields_that_are_missing_from_fieldorder_option() {
+                var options = new TextDestinationOptions(
+                    firstLineIsHeaders: true,
+                    fieldOrder: new[] {"Bar", "Baz"} );
+
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] {
+                    new {Foo = "foo", Bar = "bar", Baz = "baz"}
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result)
+                    .StartsWith("Bar\tBaz")
+                    .And
+                    .EndsWith("bar\tbaz\r\n");
+            }
         }
 
 
