@@ -9,11 +9,11 @@ namespace FakerOfData.TextDestination.Test {
 
         public class Load_method {
             private readonly StringBuilder testOutput;
-            private readonly Func<string,TextWriter> testWriter;
+            private readonly Func<TextWriter> testWriter;
 
             public Load_method() {
                 testOutput = new StringBuilder();
-                testWriter = s => new StringWriter(testOutput);
+                testWriter = () => new StringWriter(testOutput);
             }
 
             [Fact]

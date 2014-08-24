@@ -8,9 +8,9 @@ using FakerOfData.Core.Utility;
 namespace FakerOfData.TextDestination {
     public class TextDestination : IDestination {
         public TextDestination(TextDestinationOptions options, string outputPath) 
-            : this(options, f => new StreamWriter(Path.Combine(outputPath,f))) { }
+            : this(options, () => new StreamWriter(Path.Combine(outputPath))) { }
 
-        public TextDestination(TextDestinationOptions options, Func<string, TextWriter> writerCreator = null ) {
+        public TextDestination(TextDestinationOptions options, Func<TextWriter> writerCreator = null ) {
             _createWriter = writerCreator ?? DefaultWriter;
             _options = options;
         }
@@ -19,7 +19,7 @@ namespace FakerOfData.TextDestination {
             var filename = string.Format(FileNameTemplate, typeof (T).Name, DateTime.Now);
             var properties = OrderProperties( typeof (T).GetProperties() );
 
-            using (var writer = _createWriter(filename)) {
+            using (var writer = _createWriter()) {
                 if (_options.FirstLineIsHeaders) {
                     writer.Write(BuildHeaders(properties) + _options.LineSeparator);
                 }
@@ -73,12 +73,13 @@ namespace FakerOfData.TextDestination {
                 : DeCamelizer.Split(property.Name);
         }
 
-        private TextWriter DefaultWriter(string filePath) {
+        private TextWriter DefaultWriter() {
+            var filePath = string.Format(FileNameTemplate, "fakedata", DateTime.Now);
             return new StreamWriter(filePath);
         }
 
         private const string FileNameTemplate = "{0}-{1:yyyyMMddHHmmss}.txt";
-        private readonly Func<string, TextWriter> _createWriter;
+        private readonly Func<TextWriter> _createWriter;
         private readonly TextDestinationOptions _options;
     }
 }
