@@ -33,7 +33,7 @@ namespace FakerOfData.Test {
             }
         }
 
-        public class Require_method {
+        public class Use_IRandomValue_method {
             private class TestRandomValue : IRandomValue {
                 public Func<object, object> RandomValues { get { return _ => _; } }
                 public string Key { get { return GetType().Name; } }
@@ -41,7 +41,7 @@ namespace FakerOfData.Test {
 
             [Fact]
             public void should_add_the_specified_IRandomValue_to_the_Some_classic_api() {
-                Generator.Require<TestRandomValue>();
+                Generator.Use<TestRandomValue>();
 
                 var opt = new {};
 
@@ -52,7 +52,7 @@ namespace FakerOfData.Test {
 
             [Fact]
             public void should_add_the_specified_IRandomValue_to_the_Some_dynamic_api() {
-                Generator.Require<TestRandomValue>();
+                Generator.Use<TestRandomValue>();
 
                 var opt = new {};
 
@@ -62,7 +62,7 @@ namespace FakerOfData.Test {
             }
         }
 
-        public class Use_method {
+        public class Use_named_func_method {
             [Fact]
             public void should_register_the_specified_function_with_the_classic_Some_api() {
                 Generator.Use("TestValue", I => I);
@@ -83,6 +83,16 @@ namespace FakerOfData.Test {
                 var dynamicResult = Some.Random.TestValue(opt);
 
                 Check.That((object) dynamicResult).IsSameReferenceThan(opt);
+            }
+        }
+
+        public class Use_func_method {
+            [Fact]
+            public void should_return_its_func_argument() {
+                var func = new Func<object, object>(x => x);
+                var actual = Generator.Use(func);
+
+                Check.That(actual).IsSameReferenceThan(func);
             }
         }
     }

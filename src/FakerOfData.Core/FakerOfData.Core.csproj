@@ -51,17 +51,7 @@
     <Compile Include="RandomThings.cs" />
     <Compile Include="Some.cs" />
     <Compile Include="StringSourceExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Strings\lastnames.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Strings\women.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Strings\men.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Include="Utility\DeCamelizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FakerOfData.Csv")]
+[assembly: AssemblyTitle("FakerOfData.DbDestination.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FakerOfData.Csv")]
+[assembly: AssemblyProduct("FakerOfData.DbDestination.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6105467a-49d8-41f2-a151-e9160a617b29")]
+[assembly: Guid("c40ec439-ee6c-4a4c-92be-60d4fab9bafc")]
 
 // Version information for an assembly consists of the following four values:
 //

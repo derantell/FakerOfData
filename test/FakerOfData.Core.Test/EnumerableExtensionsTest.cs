@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FakeItEasy;
 using NFluent;
@@ -19,6 +18,18 @@ namespace FakerOfData.Test {
 
                 A.CallTo(() => fakeDestination.Load(A<IEnumerable<Dummy>>._))
                     .MustHaveHappened();
+            }
+
+            [Fact]
+            public void should_return_the_collection_returned_by_the_destination() {
+                var expected = new Dummy[0];
+                var fakeDestination = A.Fake<IDestination>();
+                A.CallTo(() => fakeDestination.Load(expected))
+                    .Returns(expected);
+                Generator.Destination = fakeDestination;
+
+                var actual = expected.Load();
+                Check.That(actual).IsSameReferenceThan(expected);
             }
         }
 

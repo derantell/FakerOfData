@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FakerOfData.Sql")]
+[assembly: AssemblyTitle("FakerOfData.TextDestination.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FakerOfData.Sql")]
+[assembly: AssemblyProduct("FakerOfData.TextDestination.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9e619a05-a2c7-41ab-b460-58fe8c55e055")]
+[assembly: Guid("616a050b-8ba4-46a8-a4dd-a03808369125")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -7,8 +7,8 @@
     <ProjectGuid>{02CC4F85-6846-49F1-A674-5609C27C51C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FakerOfData.Csv</RootNamespace>
-    <AssemblyName>FakerOfData.Csv</AssemblyName>
+    <RootNamespace>FakerOfData.TextDestination</RootNamespace>
+    <AssemblyName>FakerOfData.TextDestination</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,8 +35,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvDestination.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="TextDestination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextDestinationOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FakerOfData.Core\FakerOfData.Core.csproj">
