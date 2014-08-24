@@ -16,7 +16,6 @@ namespace FakerOfData.TextDestination {
         }
 
         public IEnumerable<T> Load<T>(IEnumerable<T> sequence) {
-            var filename = string.Format(FileNameTemplate, typeof (T).Name, DateTime.Now);
             var properties = OrderProperties( typeof (T).GetProperties() );
 
             using (var writer = _createWriter()) {
