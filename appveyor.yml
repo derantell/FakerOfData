@@ -48,3 +48,14 @@ build:
 
 # Automatic discovery of test assembiles is the default?
 
+# =============================
+# Deploy
+# =============================
+
+# Deploy packages to nuget.org
+
+deploy:
+	provider: NuGet
+	api_key: 5nufIGhOKnkZLhXsBkfCta6njJabMBLxDZRe4NtWUzbH53Ka0jrLdyLLYSnHvZK5
+	artifact: /.*\.nupkg/
+
