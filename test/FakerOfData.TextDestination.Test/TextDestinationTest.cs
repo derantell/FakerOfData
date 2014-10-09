@@ -206,6 +206,27 @@ namespace FakerOfData.TextDestination.Test {
             }
         }
 
+        public class Default_property {
+            [Fact]
+            public void should_use_sensible_defaults() {
+                var testOutput = new StringBuilder();
+                Func<TextWriter> testWriter = () => new StringWriter(testOutput);
+                var options = TextDestinationOptions.Default;
+
+                var destination = new TextDestination(options, testWriter);
+
+                var data = new[] {
+                    new {Foo = "foo", Bar = "bar", Baz = "baz"}
+                };
+
+                destination.Load(data);
+
+                var result = testOutput.ToString();
+
+                Check.That(result).IsEqualTo("foo\tbar\tbaz\r\n");
+                
+            }
+        }
 
         public class TestData {
             public string Foo { get; set; }

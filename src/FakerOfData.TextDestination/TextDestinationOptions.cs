@@ -1,5 +1,6 @@
 namespace FakerOfData.TextDestination {
     public struct TextDestinationOptions {
+
         public TextDestinationOptions(
             string fieldSeparator = "\t",
             string lineSeparator = "\r\n",
@@ -26,6 +27,7 @@ namespace FakerOfData.TextDestination {
         public readonly bool QuoteFields;
         public readonly string QuoteCharacter;
 
-        public static readonly TextDestinationOptions Default = new TextDestinationOptions();
+        public static readonly TextDestinationOptions Default = new TextDestinationOptions(
+            "\t", "\r\n", false, false, new string[0], false, "\"");
     }
 }
